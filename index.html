@@ -3,7 +3,7 @@
 
 <head>
   <title>Redux basic example</title>
-  <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+  <script src="https://unpkg.com/@reduxjs/toolkit@latest/dist/redux-toolkit.umd.js"></script>
 </head>
 
 <body>
@@ -17,29 +17,22 @@
     </p>
   </div>
   <script>
+    const RTK = window.RTK;
     const INCREMENT = 'INCREMENT'
     const DECREMENT = 'DECREMENT'
 
-    function increment() {
-      return {type: INCREMENT}
-    }
+    const increment = RTK.createAction(INCREMENT)
+    const decrement = RTK.createAction(DECREMENT)
 
-    function decrement() {
-      return {type: DECREMENT}
-    }
+    const counter = RTK.createReducer(0, {
+      [increment]: state => state + 1,
+      [decrement]: state => state - 1
+    })
 
-    function counter(state = 0, action) {
-      switch (action.type) {
-        case INCREMENT:
-          return state + 1
-        case DECREMENT:
-          return state - 1
-        default:
-          return state
-      }
-    }
+    var store = RTK.configureStore({
+      reducer: counter
+    })
 
-    var store = Redux.createStore(counter)
     var valueEl = document.getElementById('value')
 
     function render() {
