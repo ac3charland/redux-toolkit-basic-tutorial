@@ -1,4 +1,11 @@
-# Redux Counter Vanilla Example
+# Redux Toolkit Basic Tutorial
+
+Adapted from: https://redux-toolkit.js.org/tutorials/basic-tutorial
+
+
+## Original Readme:
+
+### Redux Counter Vanilla Example
 
 This example does not require a build system or a view framework, and exists to show the raw Redux API used with ES5.
 
